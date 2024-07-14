@@ -1,81 +1,73 @@
 from random import randint
 from time import sleep
+from colorama import Fore, Style, init
 
-# Utilizando cores
+# Inicializa o colorama
+init(autoreset=True)
 
-VERDE= '\033[92m'
-AZUL = '\033[94m'
-VERMELHO = '\033[91m'
-VOLTAR = '\033[0m'
-
-# Utilizando while True para continuar jogando
+# Utilizando o while True para continuar rodando o jogo
 
 while True:
-
     print('''Escolha uma opção abaixo:
-        [0] PEDRA
-        [1] PAPEL
-        [2] TESOURA''')
-
+          [0] PEDRA
+          [1] PAPEL
+          [2] TESOURA''')
 
     entrada_usuario = int(input('Escolha entre 0, 1 ou 2 para jogar: '))
-    
-    
+
     # Verificar se a entrada é válida
-    
+
     if entrada_usuario not in [0, 1, 2]:
-        print(f'{VERMELHO}Entrada inválida! Por favor, escolha entre 0, 1 ou 2.{VOLTAR}')
+        print(f'{Fore.RED}Entrada inválida! Por favor, escolha entre 0, 1 ou 2.{Style.RESET_ALL}')
         continue
-    
+
     itens = ('Pedra', 'Papel', 'Tesoura')
     computador = randint(0, 2)
 
     # Utilizando o Sleep 
 
-    print('JO..')
+    print('JO')
     sleep(1)
-    print('KEN...')
+    print('KEN')
     sleep(1)
-    print('PO!!!')
+    print('PO')
     sleep(1)
-
 
     print('=-=-=-=' * 5)
     print(f'Você escolheu {itens[entrada_usuario]}')
     print(f'O computador escolheu {itens[computador]}')
 
-
     if entrada_usuario == 0 and computador == 1:
-        print(f'\n{VERDE}O computador venceu! hahahaha{VOLTAR}')
+        print(f'\n{Fore.RED}O computador venceu! hahahaha{Style.RESET_ALL}')
     elif entrada_usuario == 1 and computador == 2:
-        print(f'\n{VERDE}O computador venceu! Mais sorte da próxima vez...{VOLTAR}')
+        print(f'\n{Fore.RED}O computador venceu! Mais sorte da próxima vez...{Style.RESET_ALL}')
     elif entrada_usuario == 2 and computador == 0:
-        print(f'\n{VERDE}O computador venceu! Ele é bom hein?{VOLTAR}')
+        print(f'\n{Fore.RED}O computador venceu! Ele é bom hein?{Style.RESET_ALL}')
     elif entrada_usuario == 0 and computador == 0:
-        print(f'\n{AZUL}Empate!!!{VOLTAR}')
+        print(f'\n{Fore.BLUE}Empate!!!{Style.RESET_ALL}')
     elif entrada_usuario == 1 and computador == 1:
-        print(f'\n{AZUL}Empate!!!{VOLTAR}')
+        print(f'\n{Fore.BLUE}Empate!!!{Style.RESET_ALL}')
     elif entrada_usuario == 2 and computador == 2:
-        print(f'\n{AZUL}Empate!!!{VOLTAR}')
+        print(f'\n{Fore.BLUE}Empate!!!{Style.RESET_ALL}')
     else:
-        print(f'\n{AZUL}Parabéns, você venceu!!!{VOLTAR}')
+        print(f'\n{Fore.GREEN}Parabéns, você venceu!!!{Style.RESET_ALL}')
     print('=-=-=-=' * 5)
 
-    # Perguntar se quer continuar jogando
+    # Perguntar se o usuário quer continuar jogando
 
-    continuar_jogando = input(f'Vamos jogar mais uma vez? ({VERDE}S{VOLTAR}/{VERMELHO}N{VOLTAR}): ').strip().upper()
-    if continuar_jogando != 'S':
-        print('\nAté a próxima! Tchau!!!')
+    continuar = input(f'Você quer continuar jogando? ({Fore.GREEN}SIM{Style.RESET_ALL}/{Fore.RED}NÃO{Style.RESET_ALL}): ').strip().upper()
+    if continuar != 'SIM':
+        print('Até a próxima. Tchau!!!')
         break
 
-
-    
-
-    
+# Fim do código
 
 
+Para transformar esse código em executável:
 
+No terminal digite o comando pip install pyinstaller
 
+Após a instalação do pyinstaller, digite o comando pyinstaller --onefile nome_do_seu_arquivo.py
 
 
 
